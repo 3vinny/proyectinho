@@ -6,7 +6,6 @@ build/
 .DS_Store
 
 # importantes
-data/
 *.out
 *.o
 *.bin
