@@ -4,33 +4,22 @@
 // --- Header central proyecto ---***
 
 // --- Includes ---
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_video.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <SDL2/SDL.h>
 
 // --- Constantes ---
-#define TARGET_FPS 60
+#define SCREEN_WIDTH 1920
+#define SCREEN_HEIGHT 1080
 
-// --- enums ---
-
-typedef enum {
-   SCREEN_MENU,
-   SCREEN_PLAYING,
-   SCREEN_GAMEOVER
-}Screen;
-
-// --- Estructura del input ---
+// 
 
 typedef struct {
-   bool teclaUp;
-   bool teclaDown;
-}InputState;
-
-// --- Estructura Estado del juego ---
-typedef struct {
-   Screen screen; // Pantalla activa
-   InputState input; // estado input
-   int level; // Nivel actual
-}GameState;
+   SDL_Renderer *renderer;
+   SDL_Window *ventana;
+} App;
 
 /*---- PROTOTIPOS DE FUNCIONES -------*/
 
