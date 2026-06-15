@@ -1,4 +1,13 @@
-// archivo para los assets.c
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_ttf.h>
+// archivo para los assets
+// d momento solo carga el fondo
+#include "headers/headers.h"
+
+bool cargarMedia(struct Game * game)
+{
+    game->texturaImg = IMG_LoadTexture(game->renderer, "/home/inasho/progra2/proyecto/assets/bg/bg.png");
+    if (!game->texturaImg) {
+        printf("Error iniciando textura: %s\n", IMG_GetError());
+        return true;
+    }
+    return false;
+}

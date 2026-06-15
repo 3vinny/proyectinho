@@ -1,11 +1,13 @@
-#ifndef CONSTANTS
-#define CONSTANTS
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 /* Header CONSTANTES.h: Aqui iran las constantes*/
 
-// Resolucion y fps
-#define w_inicial 1366
-#define h_inicial 768
+// sacados del main.c
+#define titulo "o cuadradinho en SDL2"
+#define w_inicial 1024
+#define h_inicial 720
+#define FLAGS_IMAGEN IMG_INIT_PNG
 #define delay 16
 #define TARGET_FPS 60
 
