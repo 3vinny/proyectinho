@@ -47,7 +47,7 @@ bool SDL_Inicia(struct Game *game)
    return false; // es el caso bueno <-
 }
 
-void game_Limpieza(struct Game * game, int exitStatus)
+void game_Limpieza(struct Game *game, int exitStatus)
 {
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyTexture(game->texturaTexto);

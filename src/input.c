@@ -1,8 +1,13 @@
 // archivo inputstate, tendra opcion de gamepad
 #include "headers/headers.h"
 
-void game_Input(struct Game * game)
+void game_Input(struct Game *game)
 {
+    // la x anterior igual a la x actual y la y lo mismo pura magia :v
+    game->x_ant = game->x;
+    game->y_ant = game->y;
+    
+    // el evento d fortnite q agarra el caso quit o que una tecla sea presionada
     SDL_Event evento;
     while (SDL_PollEvent(&evento)) {
     switch(evento.type)

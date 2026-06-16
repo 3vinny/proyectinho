@@ -1,6 +1,6 @@
 #include "headers/headers.h"
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
    fprintf(stderr, "arrancando main ---->>>>>\n");
    struct Game game = {
@@ -12,12 +12,18 @@ int main(int argc, char ** argv)
       .quit = false,
       .velocidad = 15,
       .lado = 64,
-      .x = 288,
-      .y = 208,
+      .x = 208,
+      .y = 188,
+      .x_ant = 208,
+      .y_ant = 188,
+      .x_colision = 360,
+      .y_colision = 270,
+      .w_colision = 128,
+      .h_colision = 64,
       .Fullscreen = false
    };
-// .x 288, .y 208
-   // llama a funcioon booleana inicia
+   
+   // .x 288, .y 208
    if(SDL_Inicia(&game)) 
    {
       game_Limpieza(&game, EXIT_FAILURE);
