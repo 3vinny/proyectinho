@@ -1,5 +1,5 @@
 // render.c
-#include "headers/headers.h"
+#include "headers.h"
 #include <SDL2/SDL_render.h>
 
 void game_Render(struct Game *game)
@@ -24,10 +24,10 @@ void game_Render(struct Game *game)
     // RECTANGULO (hitbox)
     SDL_SetRenderDrawBlendMode(game->renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(game->renderer, 237, 237, 255, 125);
-    SDL_Rect Hitbox = { (w_inicial/4), (h_inicial/6), (w_inicial/4)+(w_inicial/16), (w_inicial/4)+(w_inicial/16) };
+    SDL_Rect Hitbox = { game->h_x, game->h_y, game->h_w, game->h_h };
     SDL_RenderFillRect(game->renderer, &Hitbox);
 
-    // RECTANGULO (Movible)
+    // RECTANGULO (Movible con teclado)
     SDL_SetRenderDrawColor(game->renderer, 0, 180, 255, 255); //rojo: 255, 0, 0 celeste: 0, 179, 255
     SDL_Rect Rectang = { game->x, game->y, game->lado, game->lado };
     SDL_RenderFillRect(game->renderer, &Rectang);

@@ -1,6 +1,6 @@
 // Juego.c
 // Inicio del juego
-#include "headers/headers.h"
+#include "headers.h"
 
 void game_Main(struct Game *game, int exitStatus)
 {
@@ -9,7 +9,8 @@ void game_Main(struct Game *game, int exitStatus)
     while (!game->quit)
     {
         game_Input(game);
-        game_Menu(game);
+        //game_Menu(game);
+        game_Tiles(game);
         game_Update(game);
         game_Render(game);
 

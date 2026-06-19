@@ -1,62 +1,101 @@
-// Archivo update.c
-#include "headers/headers.h"
+    // Archivo update.c: este se encarga de ver que mi cuadrado azul no toque
+    // y que antes de renderizarse se cambie o no su posicion
+    // pendiente ponerle velocidad (float)
+    #include "headers.h"
 
-// Este archivo impide que se salga de los bordesluego sera cambiado x un scroll
+    void game_Update(struct Game *game){
+        
+        int ancho_act = 0, alto_act = 0;
+        int toca_xR = 1, toca_xL = 1; // flags
+        int toca_yD = 1, toca_yU = 1;
 
-void game_Update(struct Game *game){
-    int ancho_act, alto_act;
-    int toca_x, toca_y; //estas son flagss
+        SDL_GetWindowSize(game->ventana, &ancho_act, &alto_act);
 
-    SDL_GetWindowSize(game->ventana, &ancho_act, &alto_act);
-//(w_inicial/4), (h_inicial/6), (w_inicial/4), (h_inicial/2)
-    if (game->x < (w_inicial/4))
-    {
-        (game->x) = (w_inicial/4);
-    }
+        SDL_Rect temp1 = {
+            .x = game->x,
+            .y = game->y,
+            .w = game->lado,
+            .h = game->lado
+        };
 
-    if (game->y < (h_inicial/6))
-    {
-        (game->y) = (h_inicial/6);
-    }
+        SDL_Rect temp2 = {
+            .x = game->h_x,
+            .y = game->h_y,
+            .w = game->h_w,
+            .h = game->h_h
+        };
 
-    if (game->x > (w_inicial/2))
-    {
-        (game->x) = (w_inicial/2);
-    }
-// w+h igualo h=w
-    if (game->y > ((w_inicial/4)+(w_inicial/6)))
-    {
-        (game->y) = ((w_inicial/4)+(w_inicial/6));
-    }
+        // x_colision, y_colision, w_colision, h_colision
+        SDL_Rect temp3 = {
+            .x = game->x_colision,
+            .y = game->y_colision,
+            .w = game->w_colision,
+            .h = game->h_colision
+        };
+        
+        if (game->right == 1)
+        {
+            temp1.x += 1*(game->velocidad);
+            if(!SDL_HasIntersection(&temp1, &temp2)){
+                toca_xR = 0;
+            } else {
+                toca_xR = 1;
+            }
+            // aca es - posicion cuadrado porque no deberia tocar el borde ventana (no seria visible)
+            if (temp1.x <= 0 || temp1.x > ancho_act - (game->lado)) { 
+                toca_xR = 1;
+            }
+        }
 
-    if (game->x < (game->x_colision + game->w_colision) && (game->x + game->lado) > game->x_colision){
-        toca_x = 1;
-    }
+        if (game->left == 1)
+        {
+            temp1.x -= 1*(game->velocidad);
+            if(!SDL_HasIntersection(&temp1, &temp2)){
+                toca_xL = 0;
+            } else {
+                toca_xL = 1;
+            }
 
-    if (game->y < (game->y_colision + game->h_colision) && (game->y + game->lado) > game->y_colision){
-        toca_y = 1;
-    }
+            if (temp1.x <= 0 || temp1.x > ancho_act - (game->lado)) { 
+                toca_xL = 1; 
+            }
+        }
+        
+        if (game->down == 1)
+        {
+            temp1.y += 1*(game->velocidad);
+            if(!SDL_HasIntersection(&temp1, &temp2))
+            {
+                toca_yD = 0;
+            } else {
+                toca_yD = 1;
+            }
 
-    if (toca_x == 1 && toca_y == 1){
-        game->x = game->x_ant; // x es igual al anterior (mejor que la multiplicacion infinitesimal .v)
-        game->y = game->y_ant;
-        //game->x = game->x - (0.0001)*(game->x_colision - game->x);
-        //game->y = game->y - (0.0001)*(game->y_colision - game->y);
-    }
-/*
-// HITBOX = VENTANA aca
-    if (game->x < 0){
-        (game->x) = 0;
-    }
-    if (game->y < 0){
-        (game->y) = 0;
-    }
+            if (temp1.y <= 0 || temp1.y > alto_act - (game->lado)) { 
+                toca_yD = 1; 
+            }
+        }
 
-    if (game->x + game->lado > ancho_act) {
-        game->x = ancho_act - (game->lado);
-    }
+        if (game->up == 1)
+        {
+            temp1.y -= 1*(game->velocidad);
+            if(!SDL_HasIntersection(&temp1, &temp2)){
+                toca_yU = 0;
+            } else {
+                toca_yU = 1;
+            }
 
-    if (game->y + game->lado > alto_act) {
-        game->y = alto_act - (game->lado);
-    }*/
-}
+            if (temp1.y <= 0 || temp1.y > alto_act - (game->lado)) { 
+                toca_yU = 1; 
+            }
+        }
+        
+        // posiciones son int
+        if (toca_xR == 0 || toca_xL == 0){
+            game->x = temp1.x;
+        }
+
+        if (toca_yD == 0 || toca_yU == 0){
+            game->y = temp1.y;
+        }
+    }

@@ -1,6 +1,6 @@
 // archivo para los assets
 // d momento solo carga el fondo
-#include "headers/headers.h"
+#include "headers.h"
 
 bool cargarMedia(struct Game *game)
 {

@@ -1,6 +1,6 @@
 // Configuracion
 // Volumen y muestra controles
-#include "headers/headers.h"
+#include "headers.h"
 
 bool SDL_Inicia(struct Game *game)
 {
@@ -11,7 +11,6 @@ bool SDL_Inicia(struct Game *game)
    }
    
    int inicia_Imagen = IMG_Init(FLAGS_IMAGEN);
-   // un & = binario / and a nivel de bits
    if ((inicia_Imagen & FLAGS_IMAGEN) != FLAGS_IMAGEN) {
       printf("Error iniciando imagen SDL: %s\n", IMG_GetError());
    }
@@ -44,7 +43,7 @@ bool SDL_Inicia(struct Game *game)
       return true;
    }
 
-   return false; // es el caso bueno <-
+   return false;
 }
 
 void game_Limpieza(struct Game *game, int exitStatus)

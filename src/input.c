@@ -1,5 +1,5 @@
 // archivo inputstate, tendra opcion de gamepad
-#include "headers/headers.h"
+#include "headers.h"
 
 void game_Input(struct Game *game)
 {
@@ -19,10 +19,11 @@ void game_Input(struct Game *game)
         case SDL_KEYDOWN:
             switch(evento.key.keysym.sym)
             {
-                case SDLK_UP: case SDLK_w: (game->y) -= game->velocidad; break;
-                case SDLK_DOWN: case SDLK_s: (game->y) += game->velocidad; break;
-                case SDLK_LEFT: case SDLK_a: (game->x) -= game->velocidad; break;
-                case SDLK_RIGHT: case SDLK_d: (game->x) += game->velocidad; break;
+                // podria cambiar velocidad por (game->y)--;
+                case SDLK_UP: case SDLK_w: game->up = 1; break;
+                case SDLK_DOWN: case SDLK_s: game->down = 1; break;
+                case SDLK_LEFT: case SDLK_a: game->left = 1; break;
+                case SDLK_RIGHT: case SDLK_d: game->right = 1; break;
                 case SDLK_F11:
                     game->Fullscreen = !(game->Fullscreen); // se alterna
                     if (game->Fullscreen){
@@ -37,9 +38,17 @@ void game_Input(struct Game *game)
                 default:
                 break;
             }
-
+        break;
+        case SDL_KEYUP:
+            switch(evento.key.keysym.sym){
+                case SDLK_UP: case SDLK_w: game->up = 0; break;
+                case SDLK_DOWN: case SDLK_s: game->down = 0; break;
+                case SDLK_LEFT: case SDLK_a: game->left = 0; break;
+                case SDLK_RIGHT: case SDLK_d: game->right = 0; break;
+            }
          default:
             break;
+    
         }    
     }
 }
