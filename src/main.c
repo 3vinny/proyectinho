@@ -5,6 +5,7 @@ int main(int argc, char **argv)
    
    Game game = {
       .ventana = NULL,
+      .joystick = NULL,
       .renderer = NULL,
       .surfaceTexto = NULL,
       .texturaTexto = NULL,
@@ -16,8 +17,8 @@ int main(int argc, char **argv)
       .y = 5,
       .x_ant = 208,
       .y_ant = 188,
-      .h_x = w_inicial/4, 
-      .h_y = h_inicial/4, 
+      .h_x = w_inicial/6, 
+      .h_y = h_inicial/6, 
       .h_w = 300, 
       .h_h = 300,
       .x_colision = 300,
@@ -47,7 +48,7 @@ int main(int argc, char **argv)
       exit(1);
    }
 
-   carga_Tiles(&game, "./data/hitbox.txt");
+   carga_Tiles(&game);
    
    // arranca juego y limpia
    game_Main(&game, EXIT_SUCCESS);

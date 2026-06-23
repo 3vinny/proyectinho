@@ -1,5 +1,6 @@
 // Configuracion
 // Volumen y muestra controles
+#include "SDL_joystick.h"
 #include "headers.h"
 
 bool SDL_Inicia(Game *game)
@@ -9,11 +10,24 @@ bool SDL_Inicia(Game *game)
       printf("Error al iniciar SDL: %s\n", SDL_GetError());
       return true;
    }
+
    
    int inicia_Imagen = IMG_Init(FLAGS_IMAGEN);
    if ((inicia_Imagen & FLAGS_IMAGEN) != FLAGS_IMAGEN) {
       printf("Error iniciando imagen SDL: %s\n", IMG_GetError());
    }
+
+   int num_mandos = SDL_NumJoysticks();
+   game->joystick = NULL;
+   
+   if (num_mandos < 1){
+      printf("No se encontraron mandos conectados\n");
+   } else {
+      game->joystick = SDL_JoystickOpen(0);
+      printf("%d joystick conectados.\n", num_mandos);
+      printf("joystick abierto con exito: %s\n", SDL_JoystickName(game->joystick));
+   }
+
 
    // carga ventana
    game->ventana = SDL_CreateWindow(titulo, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w_inicial, h_inicial, 0);
@@ -48,13 +62,18 @@ bool SDL_Inicia(Game *game)
 
 void game_Limpieza(Game *game, int exitStatus)
 {
-    SDL_DestroyRenderer(game->renderer);
-    SDL_DestroyTexture(game->texturaTexto);
-    SDL_DestroyTexture(game->texturaImg);
-    SDL_DestroyWindow(game->ventana);
+   SDL_DestroyRenderer(game->renderer);
+   SDL_DestroyTexture(game->texturaTexto);
+   SDL_DestroyTexture(game->texturaImg);
+   SDL_DestroyWindow(game->ventana);
 
-    IMG_Quit();
-    TTF_Quit();
-    SDL_Quit();
-    exit(exitStatus);
+   if(game->joystick != NULL)
+   {
+      SDL_JoystickClose(game->joystick);
+   }
+
+   IMG_Quit();
+   TTF_Quit();
+   SDL_Quit();
+   exit(exitStatus);
 }

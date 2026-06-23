@@ -1,7 +1,7 @@
 // carga tiles desde archivo de 20x15
 #include "headers.h"
 
-void carga_Tiles(Game *game, const char *ruta)
+void carga_Tiles(Game *game)
 {
    FILE *archivo = fopen("./data/hitbox.txt", "r");
    if (!archivo){

@@ -15,6 +15,7 @@
 
 typedef struct {
       SDL_Window *ventana;
+      SDL_Joystick *joystick;
       SDL_Renderer *renderer;
       SDL_Texture *texturaTexto;
       SDL_Texture *texturaTexto2;
@@ -71,12 +72,10 @@ void game_Limpieza(Game *game, int exitStatus); //config.c
 void game_Main(Game *game, int exitStatus); //juego.c
 void interfaz_Inicia(Game *game);  //interfaz.c
 
-//void game_Menu(Game *game); //menu.c todavia no <-
+//void game_Menu(Game *game); //todavia no <-
 void game_Input(Game *game); //input.c
-void carga_Tiles(Game *game, const char *ruta); //cargas.c
+void carga_Tiles(Game *game); //cargas.c
 void game_Update(Game *game); //update.c
 void game_Render(Game *game); //render.c
-
-SDL_Rect comprueba(Game *game); //cargas.c -> update.c -> render.c
 
 #endif
