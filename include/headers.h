@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "constants.h"
 
-struct Game {
+typedef struct {
       SDL_Window *ventana;
       SDL_Renderer *renderer;
       SDL_Texture *texturaTexto;
@@ -22,7 +22,6 @@ struct Game {
       SDL_Surface *surfaceTexto;
       SDL_Surface *surfaceTexto2;
       TTF_Font *fuente;
-
       bool quit; // Flag
       int lado; // tam cuadrado
       int wText, hText;
@@ -39,36 +38,45 @@ struct Game {
       int h_w;
       int h_h;
 
+      int x_colision;
+      int y_colision;
+      int w_colision;
+      int h_colision;
+
       int up;
       int down;
       int left;
       int right;
 
-      int x_colision; // posicion mi rectangulo
-      int y_colision;
-      int w_colision; // alto y ancho mi rectangulo
-      int h_colision;
+      struct
+      {
+         int x_tiles; // posicion mi rectangulo
+         int y_tiles;
+         int w_tiles; // alto y ancho mi rectangulo
+         int h_tiles;
+         bool activo;
+      } tiles[tile_w][tile_h];
 
-      char tilemap[tiles_x][tiles_y];
-      FILE *mapa;
-      
+
       bool Fullscreen;
 
-};
+}Game;
 
 /*---- PROTOTIPOS DE FUNCIONES -------*/
-bool SDL_Inicia(struct Game *game);  //config.c
+bool SDL_Inicia(Game *game);  //config.c
 
-bool cargarMedia(struct Game *game); //assets.c
+bool cargarMedia(Game *game); //assets.c
 
-void game_Limpieza(struct Game *game, int exitStatus); //config.c
-void game_Main(struct Game *game, int exitStatus); //juego.c
-void interfaz_Inicia(struct Game *game);  //interfaz.c
+void game_Limpieza(Game *game, int exitStatus); //config.c
+void game_Main(Game *game, int exitStatus); //juego.c
+void interfaz_Inicia(Game *game);  //interfaz.c
 
-//void game_Menu(struct Game *game); //menu.c todavia no <-
-void game_Input(struct Game *game); //input.c
-void game_Tiles(struct Game *game); //cargas.c
-void game_Update(struct Game *game); //update.c
-void game_Render(struct Game *game); //render.c
+//void game_Menu(Game *game); //menu.c todavia no <-
+void game_Input(Game *game); //input.c
+void carga_Tiles(Game *game, const char *ruta); //cargas.c
+void game_Update(Game *game); //update.c
+void game_Render(Game *game); //render.c
+
+SDL_Rect comprueba(Game *game); //cargas.c -> update.c -> render.c
 
 #endif

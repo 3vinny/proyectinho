@@ -1,19 +1,20 @@
 -- =============================================================================
 -- CONFIGURACIÓN GLOBAL DEL PROYECTO
+-- GRASIAS PANXITO :V
 -- =============================================================================
 set_project("fac")
 set_languages("c11")
 
 add_rules("mode.debug", "mode.release")
 
--- 1. SCOPE GLOBAL: Las dependencias se piden AFUERA del target
+-- 1. SCOPE GLOBAL: 
 if is_plat("linux") then
     add_requires("sdl2",       {system = true, configs = {sysconfig = {pc = "sdl2"}}})
     add_requires("sdl2_ttf",   {system = true, configs = {sysconfig = {pc = "sdl2_ttf"}}})
     add_requires("sdl2_image", {system = true, configs = {sysconfig = {pc = "sdl2_image"}}})
 end
 
--- 2. SCOPE DEL TARGET: Aquí definimos tu ejecutable
+-- 2. SCOPE DEL TARGET:
 target("game")
     set_kind("binary")
     add_includedirs("include")

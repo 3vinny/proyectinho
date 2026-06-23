@@ -2,7 +2,7 @@
 // Volumen y muestra controles
 #include "headers.h"
 
-bool SDL_Inicia(struct Game *game)
+bool SDL_Inicia(Game *game)
 {
    if (SDL_Init(SDL_INIT_EVERYTHING))
    {
@@ -16,7 +16,7 @@ bool SDL_Inicia(struct Game *game)
    }
 
    // carga ventana
-   game->ventana = SDL_CreateWindow(titulo, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w_inicial, h_inicial, SDL_WINDOW_RESIZABLE);
+   game->ventana = SDL_CreateWindow(titulo, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w_inicial, h_inicial, 0);
    if (!game->ventana) {
       printf("Error al crear ventana: %s\n", SDL_GetError());
       return true;
@@ -46,7 +46,7 @@ bool SDL_Inicia(struct Game *game)
    return false;
 }
 
-void game_Limpieza(struct Game *game, int exitStatus)
+void game_Limpieza(Game *game, int exitStatus)
 {
     SDL_DestroyRenderer(game->renderer);
     SDL_DestroyTexture(game->texturaTexto);

@@ -2,7 +2,7 @@
 // Inicio del juego
 #include "headers.h"
 
-void game_Main(struct Game *game, int exitStatus)
+void game_Main(Game *game, int exitStatus)
 {
     interfaz_Inicia(game);
 
@@ -10,7 +10,7 @@ void game_Main(struct Game *game, int exitStatus)
     {
         game_Input(game);
         //game_Menu(game);
-        game_Tiles(game);
+        carga_Tiles(game, "");
         game_Update(game);
         game_Render(game);
 

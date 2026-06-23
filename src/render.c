@@ -1,8 +1,7 @@
 // render.c
 #include "headers.h"
-#include <SDL2/SDL_render.h>
 
-void game_Render(struct Game *game)
+void game_Render(Game *game)
 {
     SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
 
@@ -31,6 +30,23 @@ void game_Render(struct Game *game)
     SDL_SetRenderDrawColor(game->renderer, 0, 180, 255, 255); //rojo: 255, 0, 0 celeste: 0, 179, 255
     SDL_Rect Rectang = { game->x, game->y, game->lado, game->lado };
     SDL_RenderFillRect(game->renderer, &Rectang);
+
+    // RECTANGULO (leible desde archivo txt
+    SDL_SetRenderDrawColor(game->renderer, 0, 60, 255, 255);
+    for (int i=0; i<tile_filas; i++){
+       for(int j=0; j<tile_cols; j++){
+          if (game->tiles[i][j].activo){
+             SDL_Rect r = {
+                game->tiles[i][j].x_tiles,
+                game->tiles[i][j].y_tiles,
+                game->tiles[i][j].w_tiles,
+                game->tiles[i][j].h_tiles
+             };
+             SDL_RenderFillRect(game->renderer, &r);
+          }
+       }
+    }
+
 
     // RECTANGULO (Colision)
     SDL_SetRenderDrawColor(game->renderer, 255, 0, 0, 255);

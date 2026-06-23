@@ -1,7 +1,7 @@
 // archivo inputstate, tendra opcion de gamepad
 #include "headers.h"
 
-void game_Input(struct Game *game)
+void game_Input(Game *game)
 {
     // la x anterior igual a la x actual y la y lo mismo pura magia :v
     game->x_ant = game->x;

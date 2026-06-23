@@ -2,7 +2,7 @@
 // d momento solo carga el fondo
 #include "headers.h"
 
-bool cargarMedia(struct Game *game)
+bool cargarMedia(Game *game)
 {
     game->texturaImg = IMG_LoadTexture(game->renderer, "/home/inasho/progra2/proyecto/assets/bg/bg.png");
     if (!game->texturaImg) {

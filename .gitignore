@@ -2,6 +2,7 @@
 .xmake/
 build/
 linux/
+linux/game
 
 # MacOS Cache
 .DS_Store
@@ -11,4 +12,3 @@ linux/
 *.o
 *.bin
 *.env
-*.txt

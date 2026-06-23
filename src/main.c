@@ -3,7 +3,7 @@
 int main(int argc, char **argv)
 {
    
-   struct Game game = {
+   Game game = {
       .ventana = NULL,
       .renderer = NULL,
       .surfaceTexto = NULL,
@@ -12,37 +12,26 @@ int main(int argc, char **argv)
       .quit = false,
       .velocidad = 1,
       .lado = 64,
-      .x = 208,
-      .y = 188,
+      .x = 5,
+      .y = 5,
       .x_ant = 208,
       .y_ant = 188,
-      .x_colision = 500,
-      .y_colision = 270,
-      .w_colision = 128,
-      .h_colision = 64,
-      .h_x = 500, 
-      .h_y = 70, 
+      .h_x = w_inicial/4, 
+      .h_y = h_inicial/4, 
       .h_w = 300, 
       .h_h = 300,
+      .x_colision = 300,
+      .y_colision = 300,
+      .w_colision = 50,
+      .h_colision = 25,
       .up = 0,
       .down = 0,
       .left = 0,
       .right = 0,
-      .mapa = NULL,
       .Fullscreen = false
    };
    
-   if((game.mapa = fopen("./data/hitbox.txt", "r")) == NULL)
-   {
-      printf("Error al abrir el archivo");
-   }
-   
-   fclose(game.mapa);
    fprintf(stderr, "----Inicializando SDL----\n");
-
-   // .x 288, .y 208
-
-   
 
    if(SDL_Inicia(&game)) 
    {
@@ -57,6 +46,8 @@ int main(int argc, char **argv)
       game_Limpieza(&game, EXIT_FAILURE);
       exit(1);
    }
+
+   carga_Tiles(&game, "./data/hitbox.txt");
    
    // arranca juego y limpia
    game_Main(&game, EXIT_SUCCESS);

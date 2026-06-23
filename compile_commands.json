@@ -1,0 +1,46 @@
+[
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/interfaz.c.o", "src/interfaz.c"],
+  "file": "src/interfaz.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/juego.c.o", "src/juego.c"],
+  "file": "src/juego.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/input.c.o", "src/input.c"],
+  "file": "src/input.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/config.c.o", "src/config.c"],
+  "file": "src/config.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/main.c.o", "src/main.c"],
+  "file": "src/main.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/assets.c.o", "src/assets.c"],
+  "file": "src/assets.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/update.c.o", "src/update.c"],
+  "file": "src/update.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/render.c.o", "src/render.c"],
+  "file": "src/render.c"
+},
+{
+  "directory": "/home/inasho/progra2/proyecto",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-std=c11", "-Iinclude", "-D_GNU_SOURCE=1", "-D_REENTRANT", "-I", "/usr/include/harfbuzz", "-I", "/usr/include/glib-2.0", "-I", "/usr/lib/glib-2.0/include", "-I", "/usr/include/sysprof-6", "-I", "/usr/include/freetype2", "-I", "/usr/include/SDL2", "-I", "/usr/include/libpng16", "-I", "/usr/include/rav1e", "-I", "/usr/include/svt-av1", "-I", "/usr/include/webp", "-DNDEBUG", "-o", "build/.objs/game/linux/x86_64/release/src/cargas.c.o", "src/cargas.c"],
+  "file": "src/cargas.c"
+}]
