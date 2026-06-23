@@ -14,13 +14,16 @@ void carga_Tiles(Game *game)
    {
       // ta mejor q el fscanf mas safe segun
       if (fgets(linea, sizeof(linea), archivo) == NULL) break;
-      for (int j=0; j<tile_cols; j++)
+      for (int j=0; j<(int)tile_cols; j++)
       {
          game->tiles[i][j].x_tiles = j * tile_w;
          game->tiles[i][j].y_tiles = i * tile_h;
-         game->tiles[i][j].w_tiles = 2*tile_w;
-         game->tiles[i][j].h_tiles = tile_h;
-         game->tiles[i][j].activo = (linea[j] == '#'); 
+         game->tiles[i][j].w_tiles = 4*tile_w;
+         game->tiles[i][j].h_tiles = 2*tile_h;
+
+         game->tiles[i][j].activo_posJ = (linea[j] == 'P');
+
+         game->tiles[i][j].activo = (linea[j] == '#');
          // cuando encuentre un # se activa booleano 
       }
    }

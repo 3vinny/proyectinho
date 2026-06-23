@@ -15,7 +15,7 @@
 
 typedef struct {
       SDL_Window *ventana;
-      SDL_Joystick *joystick;
+      SDL_GameController *mando;
       SDL_Renderer *renderer;
       SDL_Texture *texturaTexto;
       SDL_Texture *texturaTexto2;
@@ -56,6 +56,7 @@ typedef struct {
          int w_tiles; // alto y ancho mi rectangulo
          int h_tiles;
          bool activo;
+         bool activo_posJ;
       } tiles[tile_w][tile_h];
 
 

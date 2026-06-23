@@ -13,8 +13,7 @@
 #define h_inicial 600
 #define tile_w 40
 #define tile_h 40
-#define tile_cols 20 //20x15
+#define tile_cols 20 //20x15->40x22.5
 #define tile_filas 15
-
 
 #endif

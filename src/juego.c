@@ -6,6 +6,7 @@ void game_Main(Game *game, int exitStatus)
 {
     interfaz_Inicia(game);
 
+
     while (!game->quit)
     {
         game_Input(game);

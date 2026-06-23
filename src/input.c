@@ -1,52 +1,92 @@
 // archivo inputstate, tendra opcion de gamepad
+#include "SDL_events.h"
+#include "SDL_gamecontroller.h"
 #include "headers.h"
 
 void game_Input(Game *game)
 {
-    // la x anterior igual a la x actual y la y lo mismo pura magia :v
-    game->x_ant = game->x;
-    game->y_ant = game->y;
-    
    SDL_Event evento;
+    
    while (SDL_PollEvent(&evento)) {
-   switch(evento.type)
-   {
-      case SDL_QUIT:
+      if(evento.type == SDL_QUIT){
          game->quit = true;
-      break;
+      }
 
-      case SDL_JOYAXISMOTION:
-         if(evento.jaxis.axis == 0 || evento.jaxis.axis == 1)
+      if (evento.type == SDL_CONTROLLERBUTTONDOWN){
+         printf("Se detecto presion mando: \n");
+         switch(evento.cbutton.button)
          {
-            printf("Movimiento de eje %d: %d\n", evento.jaxis.axis, evento.jaxis.axis);
+            case SDL_CONTROLLER_BUTTON_DPAD_UP: 
+               printf("game up");
+               game->up = 1;
+               printf("abajo de game up");
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_RIGHT: 
+               game->right = 1; 
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_DOWN: 
+               game->down = 1; 
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_LEFT: 
+               game->left = 1; 
+               break;
+            default: game->up, game->down, game->left, game->right = 0; break;
          }
-      break;
-      /*-up=1
-	-down=4
-	-left=8
-	-right=2
-	-ninguno=0
-       */
-      case SDL_JOYHATMOTION:
-         printf("boton HAT presionado: %d con valor: %d\n", evento.jhat.hat, evento.jhat.value);
-         switch(evento.jhat.value)
+      }
+
+      if (evento.type == SDL_CONTROLLERBUTTONUP){
+         printf("se detecto levantamiento de mando: \n");
+         switch(evento.cbutton.button)
          {
-         case 0: game->up, game->down, game->left, game->right = 0; break;
-            case 1: game->up = 1; break;
-            case 2: game->right = 1; break;
-            case 4: game->down = 1; break;
-            case 8: game->left = 1; break;
+            case SDL_CONTROLLER_BUTTON_DPAD_UP: 
+               game->up = 0;
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_RIGHT: 
+               game->right = 0; 
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_DOWN: 
+               game->down = 0; 
+               break;
+            case SDL_CONTROLLER_BUTTON_DPAD_LEFT: 
+               game->left = 0; 
+               break;
+            default: game->up, game->down, game->left, game->right = 0; break;
          }
-      break;
+      }
 
-      case SDL_JOYBUTTONDOWN:
-         printf("Boton %d presionado.\n", evento.jbutton.button);
-         break;
+      // CASO PALANCAS GAMEPAD
+      if(evento.type == SDL_CONTROLLERAXISMOTION){
+         switch(evento.caxis.axis){
+            case SDL_CONTROLLER_AXIS_LEFTX:
+               printf("Izquierda x\n");
+               break;
+            case SDL_CONTROLLER_AXIS_LEFTY:
+               printf("Izquierda y\n");
+               break;
+            case SDL_CONTROLLER_AXIS_RIGHTX:
+               printf("Derecha x\n");
+               break;
+            case SDL_CONTROLLER_AXIS_RIGHTY:
+               printf("Derecha y\n");
+               break;
+            case SDL_CONTROLLER_AXIS_MAX:
+               printf("Maximo\n");
+               break;
+            case SDL_CONTROLLER_AXIS_TRIGGERLEFT:
+               printf("Trigger left\n");
+               break;
+            case SDL_CONTROLLER_AXIS_TRIGGERRIGHT:
+               printf("Trigger right\n");
+               break;
+            default:
+               printf("Invalido o default\n");
+               break;
+         }
+      }
 
-      case SDL_KEYDOWN:
+      if(evento.type == SDL_KEYDOWN){
          switch(evento.key.keysym.sym)
          {
-                // podria cambiar velocidad por (game->y)--;
             case SDLK_UP: case SDLK_w: game->up = 1; break;
             case SDLK_DOWN: case SDLK_s: game->down = 1; break;
             case SDLK_LEFT: case SDLK_a: game->left = 1; break;
@@ -66,15 +106,15 @@ void game_Input(Game *game)
                break;
          }
          break;
-         case SDL_KEYUP:
-            switch(evento.key.keysym.sym){
-               case SDLK_UP: case SDLK_w: game->up = 0; break;
-               case SDLK_DOWN: case SDLK_s: game->down = 0; break;
-               case SDLK_LEFT: case SDLK_a: game->left = 0; break;
-               case SDLK_RIGHT: case SDLK_d: game->right = 0; break;
-            }
-         default:
-            break;
-      }    
+      }
+
+      if(evento.type == SDL_KEYUP){
+         switch(evento.key.keysym.sym){
+            case SDLK_UP: case SDLK_w: game->up = 0; break;
+            case SDLK_DOWN: case SDLK_s: game->down = 0; break;
+            case SDLK_LEFT: case SDLK_a: game->left = 0; break;
+            case SDLK_RIGHT: case SDLK_d: game->right = 0; break;
+         }
+      }
    }
 }

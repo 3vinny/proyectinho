@@ -5,7 +5,7 @@ int main(int argc, char **argv)
    
    Game game = {
       .ventana = NULL,
-      .joystick = NULL,
+      .mando = NULL,
       .renderer = NULL,
       .surfaceTexto = NULL,
       .texturaTexto = NULL,
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
       game_Limpieza(&game, EXIT_FAILURE);
       exit(1);
    }
-
+   
    SDL_Delay(delay);
 
    if (cargarMedia(&game))

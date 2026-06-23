@@ -103,7 +103,7 @@ void game_Update(Game *game){
 
 int chequea_tiles(Game *game, SDL_Rect *player_rect) {
     for (int i = 0; i < tile_filas; i++) {
-        for (int j = 0; j < tile_cols; j++) {
+        for (int j = 0; j < (int)tile_cols; j++) {
             if (game->tiles[i][j].activo) {
                 SDL_Rect temp4 = {
                     .x = game->tiles[i][j].x_tiles,
