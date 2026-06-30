@@ -4,13 +4,11 @@ int chequea_tiles(Game *game, SDL_Rect *player_rect);
 
 void game_Update(Game *game){
         
-   int ancho_act = 0, alto_act = 0;
+   int ancho_act = game->win_w, alto_act = game->win_h;
    int toca_xR = 1, toca_xL = 1; // flags
    int toca_yD = 1, toca_yU = 1;
 
    int i, j = 0;
-
-   SDL_GetWindowSize(game->ventana, &ancho_act, &alto_act);
 
    SDL_Rect temp1 = {
       .x = game->x,
@@ -91,13 +89,24 @@ void game_Update(Game *game){
       }
    }
         
-        // posiciones son int
+   // posiciones son int
    if (toca_xR == 0 || toca_xL == 0){
       game->x = temp1.x;
    }
 
    if (toca_yD == 0 || toca_yU == 0){
       game->y = temp1.y;
+   }
+   
+   // objeto cargado desde txt caera en cascada
+   for(int i=0; i<tile_filas; i++){
+        for(int j=0; j<tile_cols; j++){
+           if(game->tiles[i][j].activo){
+               if (!chequea_tiles(game, &temp1)){
+                  game->tiles[i][j].y_tiles += 1;
+               }
+           }
+       }
    }
 }
 
@@ -114,6 +123,25 @@ int chequea_tiles(Game *game, SDL_Rect *player_rect) {
                 
                 if (SDL_HasIntersection(player_rect, &temp4)) {
                     return 1; 
+                }
+            }
+        }
+    }
+    
+    // RECTANGULO (interactivo objeto2 txt)
+    for(int i=0; i<tile_filas; i++){
+        for(int j=0; j<tile_cols; j++){
+            if(game->tiles[i][j].objeto2){
+                SDL_Rect temp5 = {
+                    game->tiles[i][j].x_tiles,
+                    game->tiles[i][j].y_tiles,
+                    game->tiles[i][j].w_tiles,
+                    game->tiles[i][j].h_tiles
+                };
+                if (SDL_HasIntersection(player_rect, &temp5)) {
+                    game->tiles[i][j].objeto2 = false; //desaparece
+                    return 1;
+                     
                 }
             }
         }

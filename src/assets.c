@@ -4,9 +4,22 @@
 
 bool cargarMedia(Game *game)
 {
-    game->texturaImg = IMG_LoadTexture(game->renderer, "/home/inasho/progra2/proyecto/assets/bg/bg.png");
+//./data/hitbox.txt
+    game->texturaImg = IMG_LoadTexture(game->renderer, "./assets/bg/bg.png");
     if (!game->texturaImg) {
         printf("Error iniciando textura: %s\n", IMG_GetError());
+        return true;
+    }
+    
+    SDL_Surface *surfaceTemp = IMG_Load("./assets/sprites/car1.png");
+    if(!surfaceTemp){
+        printf("Error cargando imagen car1 : %s\n", IMG_GetError());
+    }
+    
+    game->texturaJugador = SDL_CreateTextureFromSurface(game->renderer, surfaceTemp);
+    SDL_FreeSurface(surfaceTemp); // se limpia surface de la ram
+    if(!game->texturaJugador) {
+        printf("Error iniciando textura jugador: %s\n", SDL_GetError());
         return true;
     }
     return false;

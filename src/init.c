@@ -28,6 +28,9 @@ bool SDL_Inicia(Game *game)
       printf("Error al crear ventana: %s\n", SDL_GetError());
       return true;
    }
+   
+   //manda la resolución actual a punteros win_w y win_h
+   SDL_GetWindowSize(game->ventana, &game->win_w, &game->win_h);
 
    // carga render
    game->renderer = SDL_CreateRenderer(game->ventana, -1, 0);
@@ -43,7 +46,8 @@ bool SDL_Inicia(Game *game)
    }
 
    // Carga de fuente ttf
-   game->fuente = TTF_OpenFont("/home/inasho/progra2/proyecto/comicsans.ttf", 40);
+   // ./data/hitbox.txt
+   game->fuente = TTF_OpenFont("./assets/ttf/comicsans.ttf", 30);
    if (!(game->fuente))
    {
       printf("Error al cargar fuente .ttf: %s\n", TTF_GetError());
@@ -58,6 +62,7 @@ void game_Limpieza(Game *game, int exitStatus)
    SDL_DestroyRenderer(game->renderer);
    SDL_DestroyTexture(game->texturaTexto);
    SDL_DestroyTexture(game->texturaImg);
+   SDL_DestroyTexture(game->texturaJugador);
    SDL_DestroyWindow(game->ventana);
 
    IMG_Quit();

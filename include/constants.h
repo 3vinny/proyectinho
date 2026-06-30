@@ -8,11 +8,14 @@
 #define FLAGS_IMAGEN IMG_INIT_PNG
 #define delay 16
 
-// tiles tdv no
-#define w_inicial 800
-#define h_inicial 600
-#define tile_w 40
-#define tile_h 40
+// resolución
+#define w_inicial 1024
+#define h_inicial 720
+
+// tiles
+// valores de referencia
+#define tile_w_ref 40
+#define tile_h_ref 40
 #define tile_cols 20 //20x15->40x22.5
 #define tile_filas 15
 

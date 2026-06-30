@@ -20,6 +20,7 @@ typedef struct {
       SDL_Texture *texturaTexto;
       SDL_Texture *texturaTexto2;
       SDL_Texture *texturaImg;
+      SDL_Texture *texturaJugador;
       SDL_Surface *surfaceTexto;
       SDL_Surface *surfaceTexto2;
       TTF_Font *fuente;
@@ -49,15 +50,26 @@ typedef struct {
       int left;
       int right;
 
+      // tamaño tile en pixeles pq el render se rige en pixeles enteros
+      int tile_w_px;
+      int tile_h_px;
+      int win_w;
+      int win_h;
+      
       struct
       {
          int x_tiles; // posicion mi rectangulo
          int y_tiles;
          int w_tiles; // alto y ancho mi rectangulo
          int h_tiles;
+         
+         int jugador_x;
+         int jugador_y;
+         
          bool activo;
          bool activo_posJ;
-      } tiles[tile_w][tile_h];
+         bool objeto2;
+      } tiles[tile_filas][tile_cols];
 
 
       bool Fullscreen;
@@ -65,17 +77,16 @@ typedef struct {
 }Game;
 
 /*---- PROTOTIPOS DE FUNCIONES -------*/
-bool SDL_Inicia(Game *game);  //config.c
-
+bool SDL_Inicia(Game *game);  //eventos.c
 bool cargarMedia(Game *game); //assets.c
 
-void game_Limpieza(Game *game, int exitStatus); //config.c
+void game_Limpieza(Game *game, int exitStatus); //eventos.c
 void game_Main(Game *game, int exitStatus); //juego.c
 void interfaz_Inicia(Game *game);  //interfaz.c
 
-//void game_Menu(Game *game); //todavia no <-
-void game_Input(Game *game); //input.c
+void game_Input(Game *game); //eventos.c
 void carga_Tiles(Game *game); //cargas.c
+void ajusta_Tiles(Game *game); //cargas.c
 void game_Update(Game *game); //update.c
 void game_Render(Game *game); //render.c
 
